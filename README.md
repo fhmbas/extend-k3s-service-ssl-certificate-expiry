@@ -6,12 +6,19 @@ The impact of this is many services were in error condition. So, it will be good
    systemctl stop k3s
    ```
 3. Add CATTLE_NEW_SIGNED_CERT_EXPIRATION_DAYS into K3S runtime environment file at /etc/systemd/system/k3s.service.env here is my example:
-     ```shell
-     CATTLE_NEW_SIGNED_CERT_EXPIRATION_DAYS=3650
-     K3S_DATASTORE_CAFILE='/etc/etcd/etcd-ca.crt'
-     K3S_DATASTORE_CERTFILE='/etc/etcd/server.crt'
-     K3S_DATASTORE_ENDPOINT='https://10.10.10.2:2379,https://10.10.10.3:2379,https://10.10.10.4:2379'
-     K3S_DATASTORE_KEYFILE='/etc/etcd/server.key'
-     K3S_TOKEN='xxxxxxxxxx30534ef739b2cb455ab17f75e814fe54e9e56c841d5ce4395xxxxxxx::server:xxxxxxxxxxxx50bd4d2346b29dda'
-     ```
-     
+   ```shell
+   CATTLE_NEW_SIGNED_CERT_EXPIRATION_DAYS=3650
+   K3S_DATASTORE_CAFILE='/etc/etcd/etcd-ca.crt'
+   K3S_DATASTORE_CERTFILE='/etc/etcd/server.crt'
+   K3S_DATASTORE_ENDPOINT='https://10.10.10.2:2379,https://10.10.10.3:2379,https://10.10.10.4:2379'
+   K3S_DATASTORE_KEYFILE='/etc/etcd/server.key'
+   K3S_TOKEN='xxxxxxxxxx30534ef739b2cb455ab17f75e814fe54e9e56c841d5ce4395xxxxxxx::server:xxxxxxxxxxxx50bd4d2346b29dda'
+   ```
+4. Renew certificate using this command
+   ```
+   k3s certificate rotate
+   ```
+5. Star K3S service using this command
+   ```
+   systemctl start k3s
+   ```
