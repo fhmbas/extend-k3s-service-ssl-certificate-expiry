@@ -18,7 +18,7 @@ The impact of this is many services were in error condition. So, it will be good
    ```
    k3s certificate rotate
    ```
-5. Star K3S service using this command
+5. Start K3S service using this command
    ```
    systemctl start k3s
    ```
